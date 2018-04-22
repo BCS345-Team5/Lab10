@@ -21,7 +21,7 @@ public class MainDriver extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		Image alien = new Image("robot.png");
+		Image alien = new Image("robot.jpg");
 	        
 	    imageView = new ImageView(alien);
 	    imageView.setX(20);
