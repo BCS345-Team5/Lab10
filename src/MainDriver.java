@@ -16,41 +16,41 @@ public class MainDriver extends Application{
 
 	public final static int JUMP = 10;
     
-    private ImageView imageView;
+    private ImageView imageView1;
+    private ImageView imageView2;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
 		Image alien = new Image("robot.jpg");
+		Image maze= new Image("maze.png");
 	        
-	    imageView = new ImageView(alien);
-	    imageView.setX(20);
-	    imageView.setY(20);
+	    imageView1 = new ImageView(alien);
+	    imageView1.setX(0);
+	    imageView1.setY(285);
+	    
+	    imageView2 = new ImageView(maze);
+	    imageView2.setX(0);
+	    imageView2.setY(25);
+	    
 	        
-	    Group root = new Group(imageView);
+	    Group root = new Group(imageView2,imageView1);
 
-	    Scene scene = new Scene(root, 400, 200, Color.BLACK);
+	    Scene scene = new Scene(root, 600, 450, Color.WHITE);
 	    scene.setOnKeyPressed(this::processKeyPress);
 		
-		GridPane grid = new GridPane();
-		grid.setPadding(new Insets(10, 10, 10, 10));
-		grid.setVgap(5);
-		grid.setHgap(5);
-		
 		Button resetPos = new Button("Reset");
-		GridPane.setConstraints(resetPos, 2, 1);
-		grid.getChildren().add(resetPos);
+		root.getChildren().add(resetPos);
 		resetPos.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				imageView.setX(20);
-			    imageView.setY(20);
+				imageView1.setX(0);
+			    imageView1.setY(285);
 			}
 		});
 		
 		Stage pu= new Stage();
 		pu.setTitle("MAZE");
-		Scene mainScene = new Scene(grid, 400, 300);
 		pu.setScene(scene);
 		pu.show();
 	}
@@ -61,16 +61,16 @@ public class MainDriver extends Application{
         {
         		//Add check at each direction to check if theres a wall where its trying to move
             case UP:
-                imageView.setY(imageView.getY() - JUMP);
+                imageView1.setY(imageView1.getY() - JUMP);
                 break;
             case DOWN:
-                imageView.setY(imageView.getY() + JUMP);
+                imageView1.setY(imageView1.getY() + JUMP);
                 break;
             case RIGHT:
-                imageView.setX(imageView.getX() + JUMP);
+                imageView1.setX(imageView1.getX() + JUMP);
                 break;
             case LEFT:
-                imageView.setX(imageView.getX() - JUMP);
+                imageView1.setX(imageView1.getX() - JUMP);
                 break;
             default:
                 break;  // do nothing if it's not an arrow key
