@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class MainDriver extends Application{
 
-	public final static int JUMP = 10;
+	public final static int JUMP = 5;
     
     private ImageView imageView1;
     private ImageView imageView2;
