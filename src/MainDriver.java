@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 public class MainDriver extends Application{
 
-	public final static int JUMP = 10;
+	public final static int JUMP = 7;
     
     private ImageView imageView1;
     private ImageView imageView2;
@@ -92,8 +92,11 @@ public class MainDriver extends Application{
             case DOWN:
                 imageView1.setY(imageView1.getY() + JUMP);
                 break;
-            case RIGHT:
+            case RIGHT:   
+            	if(reader.getColor((int)imageView1.getX()+27,(int)imageView1.getY()).equals(Color.WHITE)){
                 imageView1.setX(imageView1.getX() + JUMP);
+            	//System.out.println((reader.getColor((int)imageView1.getX()+27,(int)imageView1.getY()).toString()));
+            	}
                 break;
             case LEFT:
                 imageView1.setX(imageView1.getX() - JUMP);
