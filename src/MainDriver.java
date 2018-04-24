@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 public class MainDriver extends Application{
 
-	public final static int JUMP = 10;
+	public final static int JUMP = 7;
     
     private ImageView imageView1;
     private ImageView imageView2;
@@ -23,6 +23,7 @@ public class MainDriver extends Application{
     private Group root;
     private Image maze;
     PixelReader reader;
+    String pointWhite,pointBlue;
     
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -33,6 +34,9 @@ public class MainDriver extends Application{
 		maze= new Image("maze.png");
 		
 		reader = maze.getPixelReader();
+		
+		pointWhite = (""+reader.getColor(10,10));
+		pointBlue = (""+reader.getColor(20,50));
 		
 		win=new Label();
 		win.setTranslateX(50);
@@ -71,32 +75,61 @@ public class MainDriver extends Application{
 	
 	public void processKeyPress(KeyEvent event)
     {
-		//System.out.println("Robot X Pos: "+imageView1.getX());
-		//System.out.println("Robot Y Pos: "+imageView1.getY());
+		System.out.println("Robot X Pos: "+imageView1.getX());
+		System.out.println("Robot X Pos: "+imageView1.getX());
+		System.out.println("Robot Y Pos: "+imageView1.getY());
+		String colorUP1=(""+Color.web(""+reader.getColor((int)imageView1.getX()+20,(int)imageView1.getY()-30)));
+		String colorUP2=(""+Color.web(""+reader.getColor((int)imageView1.getX()+5,(int)imageView1.getY()-30)));
+		String colorDOWN1=(""+Color.web(""+reader.getColor((int)imageView1.getX()+20,(int)imageView1.getY()+5)));
+		String colorDOWN2=(""+Color.web(""+reader.getColor((int)imageView1.getX()+5,(int)imageView1.getY()+5)));
+		
         switch (event.getCode())
         {
         		//Add check at each direction to check if theres a wall where its trying to move
-            case UP:
-            	//if((reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30).toString()==Color.web("0xffffffff").toString())&&(reader.getColor((int)imageView1.getX()+50,(int)imageView1.getY()-30).toString()==Color.web("0xffffffff").toString())) {
-            	if(true) {
+            case UP:       
+            	if(pointWhite.equals(colorUP1)&& pointWhite.equals(colorUP2)) {
+            	//if (true) {
             		imageView1.setY(imageView1.getY() - JUMP);
-            		System.out.println("Inside the if statement");
+            		System.out.println(Color.web(""+reader.getColor(10,10)));
+            		System.out.println("Inside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30)));
+
             	}
             	else {
-            		System.out.println("Robot X Pos: "+imageView1.getX());
-            		System.out.println("Robot Y Pos: "+imageView1.getY());
-            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30)));
+            		//System.out.println("Color1: "+pointWhite);
+            		//System.out.println("Color2: "+colorUP1);
+            		//System.out.println("Robot X Pos: "+imageView1.getX());
+            		//System.out.println("Robot Y Pos: "+imageView1.getY());
+            		//System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30)));
             	}
             		//imageView1.setY(imageView1.getY() - JUMP);
                 break;
             case DOWN:
-                imageView1.setY(imageView1.getY() + JUMP);
+            	if(pointWhite.equals(colorDOWN1)&& pointWhite.equals(colorDOWN2)) {
+            		imageView1.setY(imageView1.getY() + JUMP);
+            	}
+            	else {
+            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
+               	}
                 break;
             case RIGHT:
-                imageView1.setX(imageView1.getX() + JUMP);
+            	if(reader.getColor((int)imageView1.getX()+30,(int)imageView1.getY()).equals(Color.WHITE) && 
+            			reader.getColor((int)imageView1.getX()+30,(int)imageView1.getY()-25).equals(Color.WHITE)) {
+            	//if(true) {
+            		imageView1.setX(imageView1.getX() + JUMP);
+            	}
+            	else {
+            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
+               	}
                 break;
             case LEFT:
-                imageView1.setX(imageView1.getX() - JUMP);
+            	if(reader.getColor((int)imageView1.getX()-5,(int)imageView1.getY()).equals(Color.WHITE) && 
+            			reader.getColor((int)imageView1.getX()-5,(int)imageView1.getY()-25).equals(Color.WHITE)) {
+            	//if(true) {
+                	imageView1.setX(imageView1.getX() - JUMP);
+            	}
+                else {
+            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
+               	}
                 break;
             default:
                 break;  // do nothing if it's not an arrow key
@@ -104,7 +137,7 @@ public class MainDriver extends Application{
         checkWin();
     }
 	public void checkWin(){
-		if(imageView1.getX()==575 && (imageView1.getY()==265 || imageView1.getY()==275)) {
+		if(imageView1.getX()>=568 && (imageView1.getY()>=264 && imageView1.getY()<=278)) {
 			win.setText("You won! Press reset to try again.");
 		}
     }
