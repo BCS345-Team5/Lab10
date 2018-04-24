@@ -93,7 +93,8 @@ public class MainDriver extends Application{
                 imageView1.setY(imageView1.getY() + JUMP);
                 break;
             case RIGHT:   
-            	if(reader.getColor((int)imageView1.getX()+27,(int)imageView1.getY()).equals(Color.WHITE)){
+            	if(reader.getColor((int)imageView1.getX()+30,(int)imageView1.getY()).equals(Color.WHITE) && 
+            			reader.getColor((int)imageView1.getX()+30,(int)imageView1.getY()-25).equals(Color.WHITE)){
                 imageView1.setX(imageView1.getX() + JUMP);
             	//System.out.println((reader.getColor((int)imageView1.getX()+27,(int)imageView1.getY()).toString()));
             	}
