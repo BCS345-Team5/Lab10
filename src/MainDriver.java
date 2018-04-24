@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -19,14 +20,19 @@ public class MainDriver extends Application{
     private ImageView imageView1;
     private ImageView imageView2;
     private Label win;
-
+    private Group root;
+    private Image maze;
+    PixelReader reader;
+    
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
 		Image robot = new Image("robot.jpg");
 		//System.out.println("Robot Width: "+robot.getWidth());
 		//System.out.println("Robot Height: "+robot.getHeight());
-		Image maze= new Image("maze.png");
+		maze= new Image("maze.png");
+		
+		reader = maze.getPixelReader();
 		
 		win=new Label();
 		win.setTranslateX(50);
@@ -41,7 +47,7 @@ public class MainDriver extends Application{
 	    imageView2.setY(25);
 	    
 	        
-	    Group root = new Group(imageView2,imageView1,h1);
+	    root = new Group(imageView2,imageView1,h1);
 
 	    Scene scene = new Scene(root, 600, 450, Color.WHITE);
 	    scene.setOnKeyPressed(this::processKeyPress);
@@ -51,8 +57,9 @@ public class MainDriver extends Application{
 		resetPos.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				imageView1.setX(0);
+				imageView1.setX(15);
 			    imageView1.setY(285);
+			    win.setText("");
 			}
 		});
 		
@@ -70,7 +77,17 @@ public class MainDriver extends Application{
         {
         		//Add check at each direction to check if theres a wall where its trying to move
             case UP:
-                imageView1.setY(imageView1.getY() - JUMP);
+            	//if((reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30).toString()==Color.web("0xffffffff").toString())&&(reader.getColor((int)imageView1.getX()+50,(int)imageView1.getY()-30).toString()==Color.web("0xffffffff").toString())) {
+            	if(true) {
+            		imageView1.setY(imageView1.getY() - JUMP);
+            		System.out.println("Inside the if statement");
+            	}
+            	else {
+            		System.out.println("Robot X Pos: "+imageView1.getX());
+            		System.out.println("Robot Y Pos: "+imageView1.getY());
+            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30)));
+            	}
+            		//imageView1.setY(imageView1.getY() - JUMP);
                 break;
             case DOWN:
                 imageView1.setY(imageView1.getY() + JUMP);
