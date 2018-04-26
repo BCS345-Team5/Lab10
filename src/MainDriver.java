@@ -112,7 +112,8 @@ public class MainDriver extends Application{
                 break;
             case RIGHT:
             	if(reader.getColor((int)imageView1.getX()+30,(int)imageView1.getY()).equals(Color.WHITE) && 
-            			reader.getColor((int)imageView1.getX()+30,(int)imageView1.getY()-25).equals(Color.WHITE)) {
+            			reader.getColor((int)imageView1.getX()+30,(int)imageView1.getY()-25).equals(Color.WHITE) &&
+            				imageView1.getX()<570) {
             	//if(true) {
             		imageView1.setX(imageView1.getX() + JUMP);
             	}
@@ -122,7 +123,8 @@ public class MainDriver extends Application{
                 break;
             case LEFT:
             	if(reader.getColor((int)imageView1.getX()-5,(int)imageView1.getY()).equals(Color.WHITE) && 
-            			reader.getColor((int)imageView1.getX()-5,(int)imageView1.getY()-25).equals(Color.WHITE)) {
+            			reader.getColor((int)imageView1.getX()-5,(int)imageView1.getY()-25).equals(Color.WHITE) &&
+            				imageView1.getX()>15) {
             	//if(true) {
                 	imageView1.setX(imageView1.getX() - JUMP);
             	}
