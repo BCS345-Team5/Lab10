@@ -75,9 +75,8 @@ public class MainDriver extends Application{
 	
 	public void processKeyPress(KeyEvent event)
     {
-		System.out.println("Robot X Pos: "+imageView1.getX());
-		System.out.println("Robot X Pos: "+imageView1.getX());
-		System.out.println("Robot Y Pos: "+imageView1.getY());
+		//System.out.println("Robot X Pos: "+imageView1.getX());
+		//System.out.println("Robot Y Pos: "+imageView1.getY());
 		String colorUP1=(""+Color.web(""+reader.getColor((int)imageView1.getX()+20,(int)imageView1.getY()-30)));
 		String colorUP2=(""+Color.web(""+reader.getColor((int)imageView1.getX()+5,(int)imageView1.getY()-30)));
 		String colorDOWN1=(""+Color.web(""+reader.getColor((int)imageView1.getX()+20,(int)imageView1.getY()+5)));
@@ -90,8 +89,8 @@ public class MainDriver extends Application{
             	if(pointWhite.equals(colorUP1)&& pointWhite.equals(colorUP2)) {
             	//if (true) {
             		imageView1.setY(imageView1.getY() - JUMP);
-            		System.out.println(Color.web(""+reader.getColor(10,10)));
-            		System.out.println("Inside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30)));
+            		//System.out.println(Color.web(""+reader.getColor(10,10)));
+            		//System.out.println("Inside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+25,(int)imageView1.getY()-30)));
 
             	}
             	else {
@@ -108,7 +107,7 @@ public class MainDriver extends Application{
             		imageView1.setY(imageView1.getY() + JUMP);
             	}
             	else {
-            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
+            		//System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
                	}
                 break;
             case RIGHT:
@@ -118,7 +117,7 @@ public class MainDriver extends Application{
             		imageView1.setX(imageView1.getX() + JUMP);
             	}
             	else {
-            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
+            		//System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
                	}
                 break;
             case LEFT:
@@ -128,7 +127,7 @@ public class MainDriver extends Application{
                 	imageView1.setX(imageView1.getX() - JUMP);
             	}
                 else {
-            		System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
+            		//System.out.println("Outside the if statement\nColor: "+Color.web(""+reader.getColor((int)imageView1.getX()+15,(int)imageView1.getY()-30)));
                	}
                 break;
             default:
