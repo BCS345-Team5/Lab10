@@ -12,6 +12,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 
 public class MainDriver extends Application{
 
@@ -46,6 +49,75 @@ public class MainDriver extends Application{
 	    imageView1.setX(15);
 	    imageView1.setY(285);
 	    
+	    //Creating Translate Transition
+	      TranslateTransition tt1 = new TranslateTransition();
+	      tt1.setDuration(Duration.millis(1000));
+	      tt1.setNode(imageView1);
+	      tt1.setByX(28);
+	      
+	      TranslateTransition tt2 = new TranslateTransition();
+	      tt2.setDuration(Duration.millis(1000));
+	      tt2.setNode(imageView1);
+	      tt2.setByY(-112);
+	      
+	      TranslateTransition tt3 = new TranslateTransition();
+	      tt3.setDuration(Duration.millis(1000));
+	      tt3.setNode(imageView1);
+	      tt3.setByX(224);
+	      
+	      TranslateTransition tt4 = new TranslateTransition();
+	      tt4.setDuration(Duration.millis(1000));
+	      tt4.setNode(imageView1);
+	      tt4.setByY(-56);
+	      
+	      TranslateTransition tt5 = new TranslateTransition();
+	      tt5.setDuration(Duration.millis(1000));
+	      tt5.setNode(imageView1);
+	      tt5.setByX(56);
+	      
+	      TranslateTransition tt6 = new TranslateTransition();
+	      tt6.setDuration(Duration.millis(1000));
+	      tt6.setNode(imageView1);
+	      tt6.setByY(224);
+	      
+	      TranslateTransition tt7 = new TranslateTransition();
+	      tt7.setDuration(Duration.millis(1000));
+	      tt7.setNode(imageView1);
+	      tt7.setByX(56);
+	      
+	      TranslateTransition tt8 = new TranslateTransition();
+	      tt8.setDuration(Duration.millis(1000));
+	      tt8.setNode(imageView1);
+	      tt8.setByY(-112);
+	      
+	      TranslateTransition tt9 = new TranslateTransition();
+	      tt9.setDuration(Duration.millis(1000));
+	      tt9.setNode(imageView1);
+	      tt9.setByX(119);
+	      
+	      TranslateTransition tt10 = new TranslateTransition();
+	      tt10.setDuration(Duration.millis(1000));
+	      tt10.setNode(imageView1);
+	      tt10.setByY(-112);
+	      
+	      TranslateTransition tt11 = new TranslateTransition();
+	      tt11.setDuration(Duration.millis(1000));
+	      tt11.setNode(imageView1);
+	      tt11.setByX(56);
+	      
+	      TranslateTransition tt12 = new TranslateTransition();
+	      tt12.setDuration(Duration.millis(1000));
+	      tt12.setNode(imageView1);
+	      tt12.setByY(154);
+	      
+	      TranslateTransition tt13 = new TranslateTransition();
+	      tt13.setDuration(Duration.millis(1000));
+	      tt13.setNode(imageView1);
+	      tt13.setByX(20);
+	      
+	      SequentialTransition seqT = new SequentialTransition (tt1,tt2,tt3,tt4,tt5,tt6,tt7,tt8,tt9,tt10,tt11,tt12,tt13);
+	      seqT.play();
+
 	    imageView2 = new ImageView(maze);
 	    imageView2.setX(0);
 	    imageView2.setY(25);
@@ -75,8 +147,8 @@ public class MainDriver extends Application{
 	
 	public void processKeyPress(KeyEvent event)
     {
-		//System.out.println("Robot X Pos: "+imageView1.getX());
-		//System.out.println("Robot Y Pos: "+imageView1.getY());
+		System.out.println("Robot X Pos: "+imageView1.getX());
+		System.out.println("Robot Y Pos: "+imageView1.getY());
 		String colorUP1=(""+Color.web(""+reader.getColor((int)imageView1.getX()+20,(int)imageView1.getY()-30)));
 		String colorUP2=(""+Color.web(""+reader.getColor((int)imageView1.getX()+5,(int)imageView1.getY()-30)));
 		String colorDOWN1=(""+Color.web(""+reader.getColor((int)imageView1.getX()+20,(int)imageView1.getY()+5)));
